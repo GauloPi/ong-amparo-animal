@@ -1,0 +1,237 @@
+/* --- MEUS BREAKPOINTS RESPONSIVOS --- */
+/*
+  Abordagem: Mobile-First (min-width)
+  - Padrão (sem @media) = Celulares (0px - 479px)
+  - BP 1 = Celulares Grandes (480px+)
+  - BP 2 = Tablets (768px+)
+  - BP 3 = Laptops (1024px+)
+  - BP 4 = Desktops (1200px+)
+  - BP 5 = Desktops Grandes (1440px+)
+*/
+
+
+/* --- BP 1: Celulares Grandes (480px) --- */
+@media (min-width: 480px) {
+    /* (Vou deixar em branco por enquanto) */
+    /*
+        (Aqui eu poderia, por ex, aumentar um pouco os h1)
+    h1 {
+        font-size: 2.5rem; 
+    }
+    */
+}
+
+
+/* --- BP 2: Tablets (768px) --- */
+@media (min-width: 768px) {
+    /* ESTE É O MEU PRIMEIRO GRANDE BREAKPOINT! */
+
+    /* --- Cards de Projeto --- */
+    #projetos {
+        /* Mudo de 1 para 2 colunas */
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Aqui eu ativo minhas classes .col-md-* */
+    .col-md-1 {
+        grid-column: span 1;
+    }
+
+    .col-md-2 {
+        grid-column: span 2;
+    }
+
+    .col-md-3 {
+        grid-column: span 3;
+    }
+
+    .col-md-4 {
+        grid-column: span 4;
+    }
+
+    .col-md-5 {
+        grid-column: span 5;
+    }
+
+    .col-md-6 {
+        grid-column: span 6;
+    }
+
+    /* Metade */
+    .col-md-7 {
+        grid-column: span 7;
+    }
+
+    .col-md-8 {
+        grid-column: span 8;
+    }
+
+    /* 2/3 */
+    .col-md-9 {
+        grid-column: span 9;
+    }
+
+    .col-md-10 {
+        grid-column: span 10;
+    }
+
+    .col-md-11 {
+        grid-column: span 11;
+    }
+
+    .col-md-12 {
+        grid-column: span 12;
+    }
+}
+
+
+/* --- BP 3: Laptops (1024px) --- */
+@media (min-width: 1024px) {
+
+    /* Em telas maiores, mudo meus cards de 2 para 3 colunas */
+    #projetos {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    /* E aqui ativo minhas classes .col-lg-* */
+    .col-lg-1 {
+        grid-column: span 1;
+    }
+
+    .col-lg-2 {
+        grid-column: span 2;
+    }
+
+    .col-lg-3 {
+        grid-column: span 3;
+    }
+
+    /* 1/4 */
+    .col-lg-4 {
+        grid-column: span 4;
+    }
+
+    /* 1/3 */
+    .col-lg-5 {
+        grid-column: span 5;
+    }
+
+    .col-lg-6 {
+        grid-column: span 6;
+    }
+
+    /* Metade */
+    .col-lg-7 {
+        grid-column: span 7;
+    }
+
+    .col-lg-8 {
+        grid-column: span 8;
+    }
+
+    .col-lg-9 {
+        grid-column: span 9;
+    }
+
+    .col-lg-10 {
+        grid-column: span 10;
+    }
+
+    .col-lg-11 {
+        grid-column: span 11;
+    }
+
+    .col-lg-12 {
+        grid-column: span 12;
+    }
+}
+
+
+/* --- BP 4: Desktops Padrão (1200px) --- */
+@media (min-width: 1200px) {
+
+    /* Aumento um pouco a largura MÁXIMA do meu site 
+       (que estava em 1100px) */
+    body {
+        grid-template-columns: 1fr minmax(auto, 1140px) 1fr;
+    }
+}
+
+
+/* --- BP 5: Desktops Grandes (1440px) --- */
+@media (min-width: 1440px) {
+
+    /* Aumento a largura MÁXIMA de novo para telas 4K etc. */
+    body {
+        grid-template-columns: 1fr minmax(auto, 1320px) 1fr;
+    }
+}
+
+/* --- MEU MENU MOBILE (Abaixo de 768px) --- */
+/* (767px = 1px a menos que o BP 2) */
+@media (max-width: 767px) {
+
+    /* 1. Mostro meu botão hambúrguer */
+    .menu-hamburguer {
+        display: block;
+    }
+
+    /* 2. Escondo a nav e preparo ela pra ser "tela cheia" */
+    header nav {
+        display: none;
+
+        /* Layout de tela cheia */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        /* Tela cheia */
+        background-color: var(--cor-fundo);
+        z-index: 1000;
+    }
+
+    /* 3. Minha "mágica" (JS): se a nav tiver 'is-active', eu mostro! */
+    header nav.is-active {
+        display: block;
+    }
+
+    /* 4. Faço a lista <ul> ficar vertical e centralizada */
+    header nav ul {
+        flex-direction: column;
+        /* Empilho os links */
+        justify-content: center;
+        /* Centro (vertical) */
+        align-items: center;
+        /* Centro (horizontal) */
+        height: 100%;
+        /* Ocupo a <nav> inteira */
+    }
+
+    /* 5. Arrumo o submenu no mobile (sem flutuar) */
+    header nav ul li.dropdown {
+        position: static;
+        /* Reseto o 'relative' */
+    }
+
+    header nav ul li .submenu {
+        display: block;
+        /* Deixo sempre visível (sem hover) */
+        position: static;
+        /* Reseto o 'absolute' */
+        background: none;
+        /* Tiro o fundo de card */
+        box-shadow: none;
+        /* Tiro a sombra */
+        width: auto;
+        padding: 0;
+        text-align: center;
+    }
+
+    /* Ajusto os links do submenu pra parecerem "sub-itens" */
+    header nav ul li .submenu li a {
+        width: auto;
+        font-size: var(--tamanho-p);
+        color: var(--cor-secundaria);
+    }
+}

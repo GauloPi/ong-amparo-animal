@@ -5,23 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONG Amparo Animal | Cadastro</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
     <header>
         <a href="index.html">
-    <picture>
-        <source srcset="img/logo.webp" type="image/webp">
-        
-        <source srcset="img/logo.jpeg" type="image/jpeg">
-        
-        <img src="img/logo.jpeg" alt="Logotipo da ONG Amparo Animal" width="200">
-    </picture>
-</a>
+            <picture>
+                <source srcset="img/logo.webp" type="image/webp">
+
+                <source srcset="img/logo.jpeg" type="image/jpeg">
+
+                <img src="img/logo.jpeg" alt="Logotipo da ONG Amparo Animal" width="200">
+            </picture>
+        </a>
+        <button class="menu-hamburguer" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <nav>
             <ul>
                 <li><a href="index.html">Início</a></li>
-                <li><a href="projetos.html">Projetos</a></li>
+
+                <li class="dropdown">
+                    <a href="projetos.html">Projetos</a>
+
+                    <ul class="submenu">
+                        <li><a href="projetos.html#castracao">Castração Solidária</a></li>
+                        <li><a href="projetos.html#feira">Feira de Adoção</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="cadastro.html">Seja Voluntário</a></li>
             </ul>
         </nav>
@@ -45,13 +65,14 @@
 
                 <label for="telefone">Telefone:</label>
                 <input type="tel" id="telefone" name="telefone" placeholder="(12)34567-8901"
-                    pattern="\(\d{2}\)\d{5}-\d{4}" maxlength="14" title="Digite um telefone no formato: (12)34567-8901" required>
+                    pattern="\(\d{2}\)\d{5}-\d{4}" maxlength="14" title="Digite um telefone no formato: (12)34567-8901"
+                    required>
 
                 <label for="dataNascimento">Data de nascimento:</label>
                 <input type="date" id="dataNascimento" name="dataNascimento" required>
-                
+
             </fieldset>
-           
+
             <fieldset>
                 <legend>Endereço</legend>
 
@@ -68,19 +89,29 @@
                 <input type="text" id="bairro" name="bairro" required>
 
                 <label for="cep">CEP:</label>
-                <input type="text" id="cep" name="cep" placeholder="12345-678"
-                    pattern="\d{5}-\d{3}" maxlength="9" title="Digite o CEP no formato apontado 12345-678" required>
+                <input type="text" id="cep" name="cep" placeholder="12345-678" pattern="\d{5}-\d{3}" maxlength="9"
+                    title="Digite o CEP no formato apontado 12345-678" required>
 
-                <label for="cidade">Cidade:</label>
-                <input type="text" id="cidade" name="cidade" required>
+                <div class="grid-container-12">
 
-                <label for="estado">Estado:</label>
-                <input type="text" id="estado" name="estado" required>
+                    <div class="col-md-6">
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" id="cidade" name="cidade" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="estado">Estado:</label>
+                        <input type="text" id="estado" name="estado" required>
+                    </div>
+
+                </div>
+
+                
 
             </fieldset>
 
 
-            <button type="submit">Enviar</button>
+            <button type="submit" >Enviar</button>
         </form>
     </main>
 

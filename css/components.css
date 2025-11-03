@@ -1,0 +1,412 @@
+/* --- MEUS CARDS DE PROJETO --- */
+
+/* O container que segura todos os cards */
+#projetos {
+    display: grid;
+
+    /* (Mobile-First) Começo com 1 coluna (1fr = 100%) */
+    grid-template-columns: 1fr;
+
+    /* O espaço (vão) entre os cards */
+    gap: var(--espaco-m);
+}
+
+/* Faço o H2 ocupar o grid inteiro (de 1 até -1), 
+   senão ele tenta entrar na primeira célula só */
+#projetos h2 {
+    grid-column: 1 / -1;
+}
+
+/* Aqui eu defino o "look" do card individual */
+#projetos article {
+    /* O "look" da caixa: fundo branco, cantos redondos, respiro */
+    background-color: #ffffff;
+    border-radius: var(--espaco-xs);
+    padding: var(--espaco-s);
+
+    /* Minha sombra pra dar o efeito de "card" */
+    box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.1);
+
+    /* Animação suave pra levantar */
+    transition: transform 0.3s ease;
+}
+
+/* Efeito sutil: levanto o card 5px no hover */
+#projetos article:hover {
+    transform: translateY(-5px);
+}
+
+/* Imagem: 100% da largura, mantém proporção, cantos suaves e espaço embaixo */
+#projetos article img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: var(--espaco-s);
+}
+
+/* Espaço entre o h3 e o parágrafo do card */
+#projetos article h3 {
+    margin-bottom: var(--espaco-xs);
+}
+
+/* --- MEU FORMULÁRIO --- */
+
+/* 1. Estilo dos 'grupos' (fieldsets) */
+form fieldset {
+    background-color: #FFFFFF;
+    /* Fundo branco, igual aos cards */
+    border: 1px solid var(--cor-neutra-media);
+    border-radius: var(--espaco-xs);
+    padding: var(--espaco-m);
+
+    /* Espaço entre um fieldset e outro */
+    margin-bottom: var(--espaco-l);
+}
+
+/* 2. O título de cada grupo (legend) */
+form legend {
+    font-size: var(--tamanho-h3);
+    font-weight: bold;
+    color: var(--cor-primaria);
+
+    /* Truque: padding lateral pro título 'respirar' */
+    padding: 0 var(--espaco-s);
+}
+
+/* 3. Meus labels: linha própria (block), negrito e com margens */
+form label {
+    display: block;
+    /* Essencial! */
+    font-weight: bold;
+    margin-top: var(--espaco-s);
+    margin-bottom: var(--espaco-xs);
+}
+
+/* 4. Estilo padrão pra TODOS os inputs de texto */
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="date"],
+form input[type="number"] {
+    /* Ocupam 100% da largura (display block + width 100%) */
+    display: block;
+    width: 100%;
+
+    /* Meu "look" padrão: padding, borda suave, fonte normal */
+    padding: var(--espaco-s);
+    border: 1px solid var(--cor-neutra-media);
+    border-radius: 4px;
+    font-size: var(--tamanho-p);
+}
+
+/* --- MINHA VALIDAÇÃO VISUAL --- */
+
+/* 1. Quando o campo está INVÁLIDO (borda vermelha) */
+form input:invalid {
+    border-color: #E74C3C;
+
+    /* (Opcional) Sombra vermelha sutil */
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+}
+
+/* 2. Quando o campo está VÁLIDO (borda verde) */
+form input:valid {
+    border-color: #2ECC71;
+
+    /* (Opcional) Sombra verde sutil */
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
+}
+
+/* 5. Meu botão de Enviar (Submit) */
+form button[type="submit"] {
+    /* Aparência: meu amarelo de destaque, texto preto, padding L */
+    display: inline-block;
+    background-color: var(--cor-destaque);
+    color: #000000;
+    font-size: var(--tamanho-p);
+    font-weight: bold;
+    padding: var(--espaco-s) var(--espaco-l);
+
+    /* Formato: sem borda feia, redondo, cursor de mãozinha */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    /* Animação suave de cor */
+    transition: background-color 0.3s ease;
+}
+
+/* --- ESTADOS DO BOTÃO (Importante) --- */
+
+/* :hover (mouse em cima) - escureço um pouco */
+form button[type="submit"]:hover {
+    background-color: #d89320;
+}
+
+/* :focus (via 'Tab') - outline pra acessibilidade */
+form button[type="submit"]:focus {
+    outline: 3px solid var(--cor-secundaria);
+    outline-offset: 2px;
+}
+
+/* :active (no clique) - afundo o botão */
+form button[type="submit"]:active {
+    transform: translateY(2px);
+    background-color: #c0801a;
+}
+
+/* :disabled (desabilitado) - cinza, sem ação */
+form button[type="submit"]:disabled {
+    background-color: var(--cor-neutra-media);
+    color: var(--cor-neutra-escura);
+    cursor: not-allowed;
+}
+
+/* --- MEUS ALERTAS (Sucesso, Erro...) --- */
+
+/* 1. A caixa de alerta (base) */
+.alert {
+    padding: var(--espaco-s);
+    margin-bottom: var(--espaco-m);
+    border-radius: var(--espaco-xs);
+    border: 2px solid;
+    /* A cor vem dos modificadores */
+    background-color: var(--cor-neutra-clara);
+    color: var(--cor-texto);
+}
+
+/* 2. Modificador: Sucesso (Verde) */
+.alert.alert-sucesso {
+    border-color: var(--cor-sucesso);
+    background-color: #f0fdf4;
+    color: #15803d;
+}
+
+/* 3. Modificador: Perigo (Vermelho) */
+.alert.alert-perigo {
+    border-color: var(--cor-perigo);
+    background-color: #fef2f2;
+    color: #b91c1c;
+}
+
+/* 4. Modificador: Aviso (Amarelo) */
+.alert.alert-aviso {
+    border-color: var(--cor-aviso);
+    background-color: #fefce8;
+    color: #a16207;
+}
+
+/* --- MEU MODAL (Puro CSS) --- */
+
+/* 1. O 'fundo' preto transparente (overlay) */
+.modal-overlay {
+    /* Uso Flex pra centralizar a caixa (vertical/horizontal) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Fixo na tela inteira */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    /* Escondo com opacidade/visibilidade (pra poder animar) */
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+
+    /* A transição que vou animar */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* 2. A MÁGICA: Quando vira :target (clicado), eu mostro! */
+.modal-overlay:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 3. A caixa branca (o conteúdo) */
+.modal-box {
+    background-color: #FFFFFF;
+    padding: var(--espaco-m);
+    border-radius: var(--espaco-xs);
+    max-width: 600px;
+    width: 90%;
+    /* Garante funcionar bem no mobile */
+    position: relative;
+    /* Preciso disso pra ancorar o 'X' */
+}
+
+/* 4. O botão 'X' (fechar) */
+.modal-fechar {
+    /* Absoluto, no canto superior direito */
+    position: absolute;
+    top: var(--espaco-s);
+    right: var(--espaco-s);
+
+    color: var(--cor-neutra-escura);
+    text-decoration: none;
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+/* 5. Criei um .botao-modal pra reutilizar o estilo do submit */
+.botao-modal {
+    /* (Copiado do 'form button[type="submit"]') */
+    display: inline-block;
+    background-color: var(--cor-destaque);
+    color: #000000;
+    font-size: var(--tamanho-p);
+    font-weight: bold;
+    padding: var(--espaco-s) var(--espaco-l);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover do botão */
+.botao-modal:hover {
+    background-color: #d89320;
+}
+
+/* --- MEU TOAST (Puro CSS) --- */
+
+/* 1. Minha animação de "aparecer e sumir" */
+@keyframes fade-in-e-out {
+
+    /* 0%: Começa invisível e embaixo */
+    0% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+    }
+
+    /* 10%: Sobe e aparece (fade-in) */
+    10% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* 90%: Fica visível na tela */
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* 100%: Desce e desaparece (fade-out) */
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        
+    }
+}
+
+/* 2. O estilo base do Toast (escondido) */
+.toast {
+    /* Posição: fixo no canto inferior direito */
+    position: fixed;
+    bottom: var(--espaco-l);
+    right: var(--espaco-l);
+
+    /* Visual: padding, sombra, borda... (visual de card) */
+    padding: var(--espaco-s);
+    border-radius: var(--espaco-xs);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 2px solid;
+    z-index: 1000;
+
+    /* Padrão: Escondido */
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* 3. A MÁGICA: Quando vira :target, eu rodo a animação */
+.toast:target {
+    /* 5s de duração. 'forwards' é a chave: mantém sumido no final */
+    animation: fade-in-e-out 5s ease-in-out forwards;
+}
+
+/* 4. Cores (reaproveitando a lógica dos Alertas) */
+.toast.toast-sucesso {
+    border-color: var(--cor-sucesso);
+    background-color: #f0fdf4;
+    color: #15803d;
+}
+
+.toast.toast-perigo {
+    border-color: var(--cor-perigo);
+    background-color: #fef2f2;
+    color: #b91c1c;
+}
+
+.toast.toast-aviso {
+    border-color: var(--cor-aviso);
+    background-color: #fefce8;
+    color: #a16207;
+}
+
+/* --- MEUS BADGES E TAGS --- */
+
+/* 1. O container que agrupa as tags */
+.tag-container {
+    display: flex;
+    /* Uso flex + wrap (pra quebrar linha) + gap (espaço) */
+    flex-wrap: wrap;
+    gap: var(--espaco-xs);
+    margin-top: var(--espaco-s);
+}
+
+/* 2. O estilo base da tag */
+.tag {
+    display: inline-block;
+
+    /* Padding em 'em' (escala com a fonte) */
+    padding: 0.3em 0.8em;
+
+    font-size: var(--tamanho-pequeno);
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+
+    /* Faço o formato de "pílula" (border-radius alto) */
+    border-radius: 2em;
+}
+
+/* 3. Meus modificadores de cor */
+
+/* Tag Primária (meu azul) */
+.tag.tag-primaria {
+    background-color: var(--cor-primaria);
+    color: #FFFFFF;
+}
+
+/* Tag Secundária (azul claro) */
+.tag.tag-secundaria {
+    background-color: var(--cor-secundaria);
+    color: #FFFFFF;
+}
+
+/* Tag de Destaque (meu amarelo) */
+.tag.tag-destaque {
+    background-color: var(--cor-destaque);
+    color: #000000;
+}
+
+/* Tag de Sucesso (verde) */
+.tag.tag-sucesso {
+    background-color: var(--cor-sucesso);
+    color: #FFFFFF;
+}
+
+/* Tag de Perigo (vermelho) */
+.tag.tag-perigo {
+    background-color: var(--cor-perigo);
+    color: #FFFFFF;
+}

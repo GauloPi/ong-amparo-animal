@@ -1,34 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONG Amparo Animal | Página Inicial</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
 
     <header>
         <a href="index.html">
-    <picture>
-        <source srcset="img/logo.webp" type="image/webp">
-        
-        <source srcset="img/logo.jpeg" type="image/jpeg">
-        
-        <img src="img/logo.jpeg" alt="Logotipo da ONG Amparo Animal" width="200">
-    </picture>
-</a>
+            <picture>
+                <source srcset="img/logo.webp" type="image/webp">
+
+                <source srcset="img/logo.jpeg" type="image/jpeg">
+
+                <img src="img/logo.jpeg" alt="Logotipo da ONG Amparo Animal" width="200">
+            </picture>
+        </a>
+        <button class="menu-hamburguer" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <nav>
             <ul>
                 <li><a href="index.html">Início</a></li>
-                <li><a href="projetos.html">Projetos</a></li>
+
+                <li class="dropdown">
+                    <a href="projetos.html">Projetos</a>
+
+                    <ul class="submenu">
+                        <li><a href="projetos.html#castracao">Castração Solidária</a></li>
+                        <li><a href="projetos.html#feira">Feira de Adoção</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="cadastro.html">Seja Voluntário</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <h1>Bem-vindo à <strong>ONG Amparo Animal</strong></h1>
+        <a href="#meu-modal" class="botao-modal">Quero Doar!</a>
+
+        <div id="meu-modal" class="modal-overlay">
+
+            <div class="modal-box">
+                <a href="#" class="modal-fechar">&times;</a>
+
+                <h2>Ajude Nossa Causa!</h2>
+                <p>Sua contribuição é vital para continuarmos nosso trabalho. Cada doação ajuda um animal a
+                    recomeçar.</p>
+                <p style="margin-top: 16px;"><strong>Chave PIX (CNPJ):</strong></p>
+                <p style="font-size: 1.2rem; font-weight: bold;">12.345.678/0001-95</p>
+
+                <a href="#toast-obrigado" class="botao-modal" style="margin-top: 24px;">Fechar</a>
+            </div>
+
+        </div>
+
+
+
+
+        <div id="toast-obrigado" class="toast toast-sucesso">
+            <strong>Obrigado!</strong> Toda ajuda é bem-vinda.
+        </div>
+
+        <h1 class="titulos1">Bem-vindo à <strong>ONG Amparo Animal</strong></h1>
+
+        <div class="alert alert-aviso">
+            <strong>Aviso:</strong> Nossas feiras de adoção não ocorrerão neste fim de semana.
+        </div>
+
         <h2>Sobre Nós</h2>
         <h3>Missão</h3>
         <p>Promover o bem-estar e a dignidade dos animais em situação de rua, oferecendo resgate, cuidados veterinários,
@@ -44,7 +95,7 @@
             <li><strong>Educação</strong>: Acreditamos que a conscientização transforma realidades</li>
             <li><strong>Colaboração</strong>: Juntos somos mais fortes — voluntários, parceiros e comunidade.</li>
         </ul>
-        <p>A ONG Amparo Animal atua no resgate e cuidado de animais em situação de rua.</p>
+
     </main>
 
     <footer>

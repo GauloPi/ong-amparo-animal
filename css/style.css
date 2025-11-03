@@ -1,0 +1,66 @@
+:root {
+    /* 1. Paleta de Cores */
+    --cor-primaria: #0A3D62; 
+    --cor-secundaria: #3C6382;
+    --cor-destaque: #F9A826;  
+    --cor-fundo: #4285d2a5;
+    --cor-texto: #333333;
+    --cor-neutra-clara: #F4F4F4;
+    --cor-neutra-media: #CCCCCC;
+    --cor-neutra-escura: #555555;
+    
+    --cor-sucesso: #2ECC71;  
+    --cor-perigo: #E74C3C;   
+    --cor-aviso: var(--cor-destaque); 
+
+    /* 2. Tipografia Hierárquica */
+    --fonte-principal: 'Arial', 'Helvetica', sans-serif;
+
+    --tamanho-h1: 3.0rem;   
+    --tamanho-h2: 2.25rem;  
+    --tamanho-h3: 1.5rem;   
+    --tamanho-p: 1rem;     
+    --tamanho-pequeno: 0.875rem; 
+
+    /* 3. Espaçamento Modular (Base 8px) */
+    --espaco-xs: 0.5rem;   
+    --espaco-s: 1rem;      
+    --espaco-m: 1.5rem;   
+    --espaco-l: 2rem;     
+    --espaco-xl: 3rem;    
+    --espaco-xxl: 4rem;    
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos Globais */
+html {
+    font-size: 16px; /* Define a base para o 'rem' */
+}
+
+body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6; /* Melhora a legibilidade */
+}
+
+h1, h2, h3 {
+    margin-bottom: var(--espaco-s);
+    margin-top: var(--espaco-l) ;
+}
+
+h1 { font-size: var(--tamanho-h1); }
+h2 { font-size: var(--tamanho-h2); }
+h3 { font-size: var(--tamanho-h3); }
+p { font-size: var(--tamanho-p); }
+
+a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+}

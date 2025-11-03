@@ -1,0 +1,199 @@
+/* --- LEIAUTE PRINCIPAL --- */
+
+/* --- MEU CABEÇALHO --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    /* Logo pra um lado, nav pro outro */
+    align-items: center;
+    /* Alinho verticalmente (logo e nav) */
+    padding: var(--espaco-m) 0;
+    /* Respiro interno, só em cima/baixo */
+
+    /* 5. Linha sutil pra separar do resto */
+    border-bottom: 1px solid var(--cor-neutra-media);
+}
+
+/* --- MINHA NAVEGAÇÃO --- */
+nav ul {
+    display: flex;
+    /* Links lado a lado */
+    list-style: none;
+    /* Tiro as bolinhas chatas */
+    font-size: var(--tamanho-h2);
+    gap: var(--espaco-xl);
+    /* Espaço (moderno) entre os links */
+}
+
+/*
+   Faço meus links parecerem "botões"
+*/
+nav ul li a {
+    display: block;
+    /* Preciso disso pro padding funcionar direito */
+    padding: var(--espaco-xs) var(--espaco-s);
+    /* Meu preenchimento (corpo do botão) */
+    color: var(--cor-primaria);
+    font-weight: bold;
+    border-radius: 10px;
+    /* Cantos redondos */
+    transition: background-color 0.3s ease;
+    /* Animação suave */
+}
+
+/* O que faço quando o mouse passa por cima */
+nav ul li a:hover {
+    background-color: var(--cor-neutra-clara);
+    color: var(--cor-secundaria);
+}
+
+/* Um espaço abaixo de cada "post" ou seção */
+article {
+    margin-bottom: var(--espaco-xl)
+}
+
+body {
+    display: grid;
+    min-height: 100vh;
+    /* Garanto que o body ocupe a tela toda */
+
+    /* Meu "Sticky Footer" com grid: */
+    /* header (auto), main (1fr), footer (auto) */
+    grid-template-rows: auto 1fr auto;
+
+    /*         Meu layout centralizado de 3 colunas:
+        1. (1fr) Margem esquerda
+        2. (minmax) Conteúdo (máx 1100px)
+        3. (1fr) Margem direita
+    */
+    grid-template-columns: 1fr minmax(auto, 1100px) 1fr;
+}
+
+/* Espaço pro 'main' não colar no 'footer' */
+main {
+    margin-bottom: var(--espaco-xl)
+}
+
+
+header,
+main,
+footer {
+    /* Digo pra eles usarem a Coluna 2 (a do conteúdo) */
+    grid-column: 2 / 3;
+}
+
+/* --- MEU GRID CUSTOMIZADO (12 Colunas) --- */
+
+/* O container (minha "linha") */
+.grid-container-12 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* Crio as 12 colunas */
+    gap: var(--espaco-m);
+    /* O vão (gutter) entre elas */
+}
+
+/* * MEU PADRÃO (Mobile-First):
+ * Por padrão, eu empilho tudo.
+ * Faço todas as colunas (md e lg) ocuparem 12 de espaço.
+ * As Media Queries vão mudar isso depois.
+*/
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12 {
+    /* 'span 12' = ocupe 12 colunas (largura total) */
+    grid-column: span 12;
+}
+
+/* --- MEU DROPDOWN (Desktop) --- */
+
+/* 1. O <li> pai. Uso 'relative' pra ser a "âncora". */
+nav ul li.dropdown {
+    position: relative;
+}
+
+/* 2. O submenu <ul> (a caixa que flutua) */
+nav ul li .submenu {
+    display: none;
+    /* Escondo por padrão */
+    position: absolute;
+    /* Tiro do fluxo, faço flutuar */
+    top: 100%;
+    /* Posiciono logo abaixo do <li> pai */
+    left: 0;
+
+    /* Meu estilo de "card" */
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: var(--espaco-xs);
+    padding: var(--espaco-xs);
+
+    list-style: none;
+    /* Tiro bolinhas */
+    z-index: 10;
+    /* Garanto que fique por cima de tudo */
+}
+
+/* 3. O gatilho: Quando passo o mouse no <li> pai... */
+nav ul li.dropdown:hover>.submenu {
+    display: block;
+    /* ...eu mostro o submenu! */
+}
+
+/* 4. Os links <a> dentro do submenu */
+nav ul li .submenu li a {
+    /* Ajustes pra esses links específicos */
+    font-size: var(--tamanho-p);
+    /* Fonte menor */
+    width: 200px;
+    /* Largura fixa */
+}
+
+/* --- MEU BOTÃO HAMBÚRGUER (Mobile) --- */
+.menu-hamburguer {
+    display: none;
+    /* Escondo no Desktop. Media query vai mostrar. */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--espaco-s);
+    z-index: 1001;
+    /* Tem que ficar por cima de tudo no mobile */
+    position: relative;
+}
+
+/* Os 3 tracinhos do ícone */
+.menu-hamburguer span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--cor-primaria);
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+    /* Pra minha animação de 'X' (via JS) */
+}
+
+.menu-hamburguer span:last-child {
+    margin-bottom: 0;
+}

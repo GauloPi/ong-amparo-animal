@@ -170,6 +170,23 @@ nav ul li .submenu li a {
     /* Largura fixa */
 }
 
+/* --- ACESSIBILIDADE: FOCO NA NAVEGAÇÃO --- */
+
+/* 1. Foco para os links PRINCIPAIS */
+nav ul li a:focus {
+    outline: 3px solid var(--cor-destaque);
+    outline-offset: 2px;
+}
+
+/* 2. Foco para os links do SUBMENU */
+nav ul li .submenu li a:focus {
+    outline: 3px solid var(--cor-destaque);
+    outline-offset: 2px;
+    /* (O 'outline-offset' pode precisar de ajuste
+       já que o submenu é menor, mas pode começar assim) */
+}
+
+
 /* --- MEU BOTÃO HAMBÚRGUER (Mobile) --- */
 .menu-hamburguer {
     display: none;

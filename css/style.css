@@ -64,3 +64,70 @@ a {
     color: var(--cor-primaria);
     text-decoration: none;
 }
+
+/* --- ACESSIBILIDADE: MODO ESCURO --- */
+
+/* Esta regra "escuta" o sistema operacional do usuário */
+@media (prefers-color-scheme: dark) {
+    
+    /* Quando o modo escuro está ativo, 
+       nós redefinimos nossas variáveis de cor */
+    :root {
+        /* 1. Invertemos o fundo e o texto */
+        --cor-fundo: #1a1a1a;  /* Um cinza bem escuro, não preto total */
+        --cor-texto: #F4F4F4;  /* Sua '--cor-neutra-clara' original */
+
+        /* 2. Ajustamos as cores primárias para ter contraste */
+        --cor-primaria: #5c93f0; /* Um azul mais claro e vibrante */
+        --cor-secundaria: #7da0c2; /* Um pouco mais claro */
+        
+        /* 3. Cores neutras invertidas */
+        --cor-neutra-clara: #2b2b2b; /* Será o novo fundo de cards/forms */
+        --cor-neutra-media: #555555; /* Para bordas */
+        --cor-neutra-escura: #CCCCCC; /* Para texto sutil (ex: footer) */
+
+        /* 4. Cores de Alerta (Amarelo pode precisar de texto escuro) */
+        --cor-destaque: #F9A826;  
+        --cor-sucesso: #50f08c;
+        --cor-perigo: #f06a5a;
+        --cor-aviso: var(--cor-destaque);
+    }
+
+    /* 5. Ajustes Finos
+     Seus cards e forms usam um 'background-color: #ffffff' 
+     fixo no components.css. Precisamos sobrescrever isso.
+    */
+    #projetos article,
+    form fieldset,
+    .modal-box {
+        background-color: var(--cor-neutra-clara);
+        /* A cor do texto principal já é 'var(--cor-texto)', 
+           mas os alertas (components.css) podem precisar de ajuste. */
+    }
+
+    /* Ajusta os alertas para o modo escuro */
+    .alert.alert-sucesso {
+        background-color: #0e301a;
+        color: var(--cor-sucesso);
+    }
+    .alert.alert-perigo {
+        background-color: #300f0b;
+        color: var(--cor-perigo);
+    }
+    .alert.alert-aviso {
+        background-color: #302604;
+        color: var(--cor-aviso);
+    }
+
+    /* Ajusta os toasts */
+    .toast.toast-sucesso {
+        background-color: #0e301a;
+        color: var(--cor-sucesso);
+    }
+
+    /* Ajusta os botões de destaque (amarelos) */
+    form button[type="submit"],
+    .botao-modal {
+        color: #1a1a1a; /* Texto escuro para o botão amarelo */
+    }
+}

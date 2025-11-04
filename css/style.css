@@ -1,34 +1,34 @@
 :root {
     /* 1. Paleta de Cores */
-    --cor-primaria: #0A3D62; 
+    --cor-primaria: #0A3D62;
     --cor-secundaria: #3C6382;
-    --cor-destaque: #F9A826;  
-    --cor-fundo: #4285d2a5;
+    --cor-destaque: #F9A826;
+    --cor-fundo: #EBF5FF; /* Um azul muito claro para garantir alto contraste com texto escuro */
     --cor-texto: #333333;
     --cor-neutra-clara: #F4F4F4;
     --cor-neutra-media: #CCCCCC;
     --cor-neutra-escura: #555555;
-    
-    --cor-sucesso: #2ECC71;  
-    --cor-perigo: #E74C3C;   
-    --cor-aviso: var(--cor-destaque); 
+
+    --cor-sucesso: #2ECC71;
+    --cor-perigo: #E74C3C;
+    --cor-aviso: var(--cor-destaque);
 
     /* 2. Tipografia Hierárquica */
     --fonte-principal: 'Arial', 'Helvetica', sans-serif;
 
-    --tamanho-h1: 3.0rem;   
-    --tamanho-h2: 2.25rem;  
-    --tamanho-h3: 1.5rem;   
-    --tamanho-p: 1rem;     
-    --tamanho-pequeno: 0.875rem; 
+    --tamanho-h1: 3.0rem;
+    --tamanho-h2: 2.25rem;
+    --tamanho-h3: 1.5rem;
+    --tamanho-p: 1rem;
+    --tamanho-pequeno: 0.875rem;
 
     /* 3. Espaçamento Modular (Base 8px) */
-    --espaco-xs: 0.5rem;   
-    --espaco-s: 1rem;      
-    --espaco-m: 1.5rem;   
-    --espaco-l: 2rem;     
-    --espaco-xl: 3rem;    
-    --espaco-xxl: 4rem;    
+    --espaco-xs: 0.5rem;
+    --espaco-s: 1rem;
+    --espaco-m: 1.5rem;
+    --espaco-l: 2rem;
+    --espaco-xl: 3rem;
+    --espaco-xxl: 4rem;
 }
 
 /* Reset Básico */
@@ -40,27 +40,119 @@
 
 /* Estilos Globais */
 html {
-    font-size: 16px; /* Define a base para o 'rem' */
+    font-size: 16px;
+    /* Define a base para o 'rem' */
 }
 
 body {
     font-family: var(--fonte-principal);
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
-    line-height: 1.6; /* Melhora a legibilidade */
+    line-height: 1.6;
+    /* Melhora a legibilidade */
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     margin-bottom: var(--espaco-s);
-    margin-top: var(--espaco-l) ;
+    margin-top: var(--espaco-l);
 }
 
-h1 { font-size: var(--tamanho-h1); }
-h2 { font-size: var(--tamanho-h2); }
-h3 { font-size: var(--tamanho-h3); }
-p { font-size: var(--tamanho-p); }
+h1 {
+    font-size: var(--tamanho-h1);
+}
+
+h2 {
+    font-size: var(--tamanho-h2);
+}
+
+h3 {
+    font-size: var(--tamanho-h3);
+}
+
+p {
+    font-size: var(--tamanho-p);
+}
 
 a {
     color: var(--cor-primaria);
     text-decoration: none;
+}
+
+/* --- ACESSIBILIDADE: MODO ESCURO --- */
+
+/* Esta regra "escuta" o sistema operacional do usuário */
+@media (prefers-color-scheme: dark) {
+
+    /* Quando o modo escuro está ativo, 
+       nós redefinimos nossas variáveis de cor */
+    :root {
+        /* 1. Invertemos o fundo e o texto */
+        --cor-fundo: #1a1a1a;
+        /* Um cinza bem escuro, não preto total */
+        --cor-texto: #F4F4F4;
+        /* Sua '--cor-neutra-clara' original */
+
+        /* 2. Ajustamos as cores primárias para ter contraste */
+        --cor-primaria: #5c93f0;
+        /* Um azul mais claro e vibrante */
+        --cor-secundaria: #7da0c2;
+        /* Um pouco mais claro */
+
+        /* 3. Cores neutras invertidas */
+        --cor-neutra-clara: #2b2b2b;
+        /* Será o novo fundo de cards/forms */
+        --cor-neutra-media: #555555;
+        /* Para bordas */
+        --cor-neutra-escura: #CCCCCC;
+        /* Para texto sutil (ex: footer) */
+
+        /* 4. Cores de Alerta (Amarelo pode precisar de texto escuro) */
+        --cor-destaque: #F9A826;
+        --cor-sucesso: #50f08c;
+        --cor-perigo: #f06a5a;
+        --cor-aviso: var(--cor-destaque);
+    }
+
+    /* 5. Ajustes Finos
+     Cards e forms usam um 'background-color: #ffffff' 
+     fixo no components.css.
+    */
+    #projetos article,
+    form fieldset,
+    .modal-box {
+        background-color: var(--cor-neutra-clara);
+        /* A cor do texto principal já é 'var(--cor-texto)', 
+           mas os alertas (components.css) podem precisar de ajuste. */
+    }
+
+    /* Ajusta os alertas para o modo escuro */
+    .alert.alert-sucesso {
+        background-color: #0e301a;
+        color: var(--cor-sucesso);
+    }
+
+    .alert.alert-perigo {
+        background-color: #300f0b;
+        color: var(--cor-perigo);
+    }
+
+    .alert.alert-aviso {
+        background-color: #302604;
+        color: var(--cor-aviso);
+    }
+
+    /* Ajusta os toasts */
+    .toast.toast-sucesso {
+        background-color: #0e301a;
+        color: var(--cor-sucesso);
+    }
+
+    /* Ajusta os botões de destaque (amarelos) */
+    form button[type="submit"],
+    .botao-modal {
+        color: #1a1a1a;
+        /* Texto escuro para o botão amarelo */
+    }
 }

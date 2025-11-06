@@ -229,6 +229,14 @@ function carregarConteudo(href) {
         // eu preciso "rodar" a função de validação DE NOVO!
         setupValidacaoFormulario();
     }
+
+    // --- ACESSIBILIDADE SPA ---
+    // 1. Torna o 'miolo' (a tag <main>) "focável"
+    miolo.setAttribute('tabindex', '-1');
+
+    // 2. Move o foco do navegador para o 'miolo'
+    miolo.focus();
+    // -------------------------
 }
 
 // Adiciono o "ouvidor" de clique para CADA link
